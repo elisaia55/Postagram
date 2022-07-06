@@ -12,7 +12,7 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     image_url = db.Column(db.String(250), nullable=False)
     description = db.Column(db.String(125), nullable=True)
-    name = db.Column(db.String(30), nullable=True)
+    name = db.Column(db.String(35), nullable=True)
 
     @property
     def password(self):
