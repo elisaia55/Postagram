@@ -35,22 +35,21 @@ class User(db.Model, UserMixin):
             'name': self.name
         }
 
-
-follower = db.relationship("Follow", back_populates='follower_user',
-                           foreign_keys="Follow.followerId", cascade="all,delete-orphan")
-following = db.relationship("Follow", back_populates='following_user',
-                            foreign_keys="Follow.followingId", cascade="all,delete-orphan")
-post = db.relationship("Post", back_populates="user",
-                       cascade="all,delete-orphan")
-comment = db.relationship(
-    "Comment", back_populates="user", cascade="all,delete-orphan")
-like = db.relationship("Like", back_populates="user",
-                       cascade="all,delete-orphan")
-dispatcher = db.relationship("Message", back_populates="dispatcher_user",
-                             foreign_keys="Message.dispatcherId", cascade="all,delete-orphan")
-recipient = db.relationship("Message", back_populates="recipient_user",
-                            foreign_keys="Message.recipientId", cascade="all,delete-orphan")
-user1 = db.relationship("DM_Link", back_populates="user1",
-                        foreign_keys="DM_Link.userId1", cascade="all,delete-orphan")
-user2 = db.relationship("DM_Link", back_populates="user2",
-                        foreign_keys="DM_Link.userId2", cascade="all,delete-orphan")
+    follower = db.relationship("Follow", back_populates='follower_user',
+                               foreign_keys="Follow.followerId", cascade="all,delete-orphan")
+    following = db.relationship("Follow", back_populates='following_user',
+                                foreign_keys="Follow.followingId", cascade="all,delete-orphan")
+    post = db.relationship("Post", back_populates="user",
+                           cascade="all,delete-orphan")
+    comment = db.relationship(
+        "Comment", back_populates="user", cascade="all,delete-orphan")
+    like = db.relationship("Like", back_populates="user",
+                           cascade="all,delete-orphan")
+    dispatcher = db.relationship("Message", back_populates="dispatcher_user",
+                                 foreign_keys="Message.dispatcherId", cascade="all,delete-orphan")
+    recipient = db.relationship("Message", back_populates="recipient_user",
+                                foreign_keys="Message.recipientId", cascade="all,delete-orphan")
+    user1 = db.relationship("DM_Link", back_populates="user1",
+                            foreign_keys="DM_Link.userId1", cascade="all,delete-orphan")
+    user2 = db.relationship("DM_Link", back_populates="user2",
+                            foreign_keys="DM_Link.userId2", cascade="all,delete-orphan")

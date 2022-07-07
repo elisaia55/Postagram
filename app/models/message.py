@@ -15,9 +15,9 @@ class Message(db.Model):
         db.Integer, db.ForeignKey('dm_links.id'), nullable=False)
 
     dispatcher_user = db.relationship(
-        'User', back_populates='dispatcher', foreign_keys=[dispatcherId])
+        'User', back_populates='dispatcher', foreign_keys="Message.dispatcherId")
     recipient_user = db.relationship(
-        'User', back_populates="recipient", foreign_keys=[recipientId])
+        'User', back_populates="recipient", foreign_keys="Message.recipientId")
     link = db.relationship('DM_Link', back_populates="messages")
 
     def to_dict(self):

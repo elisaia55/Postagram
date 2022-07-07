@@ -11,9 +11,9 @@ class Comment(db.Model):
     createdAt = db.Column(db.DateTime, nullable=False)
 
     user = db.relationship(
-        "User", back_populates="comment",  cascade="all,delete-orphan")
+        "User", back_populates="comment")
     post = db.relationship(
-        "Post", back_populates="comment",  cascade="all,delete-orphan")
+        "Post", back_populates="comment")
 
     def to_dict(self):
         return {
