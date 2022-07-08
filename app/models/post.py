@@ -11,8 +11,10 @@ class Post(db.Model):
     createdAt = db.Column(db.DateTime, nullable=False)
 
     user = db.relationship("User", back_populates='post')
-    comment = db.relationship("Comment", back_populates="post", cascade="all,delete-orphan")
-    like = db.relationship("Like", back_populates="post", cascade="all,delete-orphan")
+    comment = db.relationship(
+        "Comment", back_populates="post", cascade="all,delete-orphan")
+    like = db.relationship("Like", back_populates="post",
+                           cascade="all,delete-orphan")
 
     def to_dict(self):
         return {

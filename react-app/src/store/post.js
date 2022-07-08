@@ -38,15 +38,16 @@ export const postDetails = (postId) => async (dispatch) => {
 
 export const newPost = (obj) => async (dispatch) => {
     const { file, description } = obj;
+    console.log(file, description, "<------ HIT")
     const form = new FormData();
     form.append('file', file);
     form.append('description', description);
-    const res = await fetch('/api/posts/new', {
+    const res = await fetch("/api/posts/new", {
         method: "POST",
         body: form,
     });
 
-}
+};
 
 
 export const getPostFollowing = () => async (dispatch) => {

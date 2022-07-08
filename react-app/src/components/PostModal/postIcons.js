@@ -1,7 +1,7 @@
 export const postIcon = (
     <svg
         aria-label="Icon to represent media such as images or videos"
-        class="_8-yf5 "
+        className="_8-yf5 "
         color="#0095f6"
         fill="#0095f6"
         height="77"

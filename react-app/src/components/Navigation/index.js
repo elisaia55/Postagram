@@ -22,11 +22,11 @@ const Navigation = () => {
                     Postagram
                 </a>
                 <div className="search-container">
-                    <input
+                    {/* <input
                         className="search-bar"
                         placeholder="Search for Users"
                     >
-                    </input>
+                    </input> */}
                     <div className="right-nav">
                         { path === "/" && num !== 1 ? (
                             <div onClick={ () => history.push("/") } className="nav-btns">

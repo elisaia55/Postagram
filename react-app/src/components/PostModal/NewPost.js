@@ -76,7 +76,7 @@ const NewPost = () => {
                             <div className="preview-new-post">
                                 { postIcon }
                                 <div className="preview-new-video">Upload photos here</div>
-                                <label className="new-post-upload" for="new-photo">
+                                <label className="new-post-upload" forhtml="new-photo">
                                     Select from Computer
                                     <input
                                         id="new-photo"
