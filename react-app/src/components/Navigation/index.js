@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { OpenModal } from "../../context/OpenModal";
 import NewPostModal from "../PostModal/PostModal";
+import './Navigation.css'
 
 const Navigation = () => {
     const dispatch = useDispatch();
@@ -17,8 +18,8 @@ const Navigation = () => {
     return (
         <div className="outer-nav-container">
             <div className="mid-nav-container">
-                <a onClick={ () => history.push("/") }>
-                    POSTagram
+                <a className="main-logo" onClick={ () => history.push("/") }>
+                    Postagram
                 </a>
                 <div className="search-container">
                     <input
@@ -26,7 +27,7 @@ const Navigation = () => {
                         placeholder="Search for Users"
                     >
                     </input>
-                    <div className="nav-right">
+                    <div className="right-nav">
                         { path === "/" && num !== 1 ? (
                             <div onClick={ () => history.push("/") } className="nav-btns">
                                 HOME ICON EMPTY

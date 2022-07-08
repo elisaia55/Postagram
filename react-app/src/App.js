@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import Navigation from './components/Navigation';
+import NewPost from './components/PostModal/NewPost';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -27,7 +28,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+      {/* <NavBar /> */ }
       <Switch>
         <Route path='/login' exact={ true }>
           <LoginForm />
@@ -35,6 +36,10 @@ function App() {
         <Route path='/signup' exact={ true }>
           <SignUpForm />
         </Route>
+        <ProtectedRoute path="/posts/:postId" exact={ true }>
+          <Navigation />
+          <NewPost />
+        </ProtectedRoute>
         <ProtectedRoute path='/users' exact={ true } >
           <UsersList />
         </ProtectedRoute>
@@ -43,7 +48,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={ true } >
-          <h1>My Home Page</h1>
+          <Navigation />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

@@ -68,9 +68,9 @@ const SignUpForm = () => {
   return (
     <div className='signup-outer-container'>
       <div className='top-signup'>
-        <img className='main-logo' src={ MainLogo } />
+        <p className='main-logo'>Postagram</p>
         <div className='sign-up-greeting'>
-          Sign up to see photos and videos from your friends.
+          <p className='sign-up-word'>Sign up to see photos and videos from your friends.</p>
         </div>
         <button onClick={ demoUser } className="signup-demo-btn">
           Log in as Demo User
@@ -109,7 +109,7 @@ const SignUpForm = () => {
           <div>
             <input
               placeholder='Username'
-              className='className=' signup-inputs
+              className='signup-inputs'
               type='text'
               name='username'
               onChange={ updateUsername }
@@ -118,39 +118,43 @@ const SignUpForm = () => {
               autoComplete="off"
             ></input>
           </div>
-          <div>
-            <input
-              placeholder="Password"
-              className='signup-inputs'
-              type="password"
-              name="password"
-              autoComplete="off"
-              onChange={ updatePassword }
-              value={ password }
-              required={ true }
-            ></input>
-            <input
-              placeholder="Repeat Password"
-              autoComplete="off"
-              className='signup-inputs'
-              type="password"
-              name="repeat_password"
-              onChange={ updateRepeatPassword }
-              value={ repeatPassword }
-              required={ true }
-            >
 
-            </input>
-            <button
-              type='submit'
-              className='signup-btn'
-              disabled={
-                !username.length || !email.length || !password.length || !repeatPassword.length || !name.length
-              }
-            >
-              Sign Up
-            </button>
-          </div>
+          <input
+            placeholder="Password"
+            className='signup-inputs'
+            type="password"
+            name="password"
+            autoComplete="off"
+            onChange={ updatePassword }
+            value={ password }
+            required={ true }
+          ></input>
+          <input
+            placeholder="Repeat Password"
+            autoComplete="off"
+            className='signup-inputs'
+            type="password"
+            name="repeat_password"
+            onChange={ updateRepeatPassword }
+            value={ repeatPassword }
+            required="{ true }"
+          >
+
+          </input>
+          <button
+            type='submit'
+            className='signup-btn'
+            disabled={
+              !username.length ||
+              !email.length ||
+              !password.length ||
+              !repeatPassword.length ||
+              !name.length
+            }
+          >
+            Sign Up
+          </button>
+
         </form>
         <div className='signup-errors'>
 

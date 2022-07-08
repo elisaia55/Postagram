@@ -27,9 +27,9 @@ export function NewModal({ onClose, children }) {
     if (!newModalNode) return null;
 
     return ReactDOM.createPortal(
-        <div id="modal2">
-            <div id="modal-background2" onClick={ onClose } />
-            <div id="modal-content2">{ children }</div>
+        <div id="modal-new">
+            <div id="modal-background-new" onClick={ onClose } />
+            <div id="modal-content-new">{ children }</div>
         </div>,
         newModalNode
     );
