@@ -1,26 +1,45 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
-import { signUp } from '../../store/session';
+import { signUp, login } from '../../store/session';
+import { OpenModal } from '../../context/OpenModal';
+import MainLogo from '../../images/POSTagram_logo.png'
+import "./auth.css"
+
+
 
 const SignUpForm = () => {
+  const { setNum } = OpenModal();
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [name, setName] = useState("")
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+  const date = new Date()
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(signUp(username.toLowerCase(), email, password, name));
       if (data) {
-        setErrors(data)
+        setErrors(data);
+      };
+      if (data) {
+        setErrors(data);
       }
+      setNum(0)
+    } else {
+      setErrors(["Passwords must be the same"])
     }
   };
+
+  const demoUser = async () => {
+    await dispatch(login("demo@aa.io", "password"))
+  }
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -38,56 +57,110 @@ const SignUpForm = () => {
     setRepeatPassword(e.target.value);
   };
 
+  const updateName = (e) => {
+    setName(e.target.value)
+  };
+
   if (user) {
     return <Redirect to='/' />;
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
+    <div className='signup-outer-container'>
+      <div className='top-signup'>
+        <img className='main-logo' src={ MainLogo } />
+        <div className='sign-up-greeting'>
+          Sign up to see photos and videos from your friends.
+        </div>
+        <button onClick={ demoUser } className="signup-demo-btn">
+          Log in as Demo User
+        </button>
+        <div className='break-or'>
+          <div className='or-line-break'></div>
+          <div className='or-word'>OR</div>
+          <div className='or-line-bot-break'></div>
+        </div>
+        <form className='signup-form-container' onSubmit={ onSignUp }>
+          <div>
+
+            <input
+              placeholder='Email'
+              className='signup-inputs'
+              type='text'
+              name='email'
+              onChange={ updateEmail }
+              value={ email }
+              required={ true }
+              autoComplete="off"
+            ></input>
+          </div>
+          <div>
+            <input
+              placeholder='Full Name'
+              className='signup-inputs'
+              type='text'
+              name='name'
+              onChange={ updateName }
+              value={ name }
+              required={ true }
+              autoComplete="off"
+            ></input>
+          </div>
+          <div>
+            <input
+              placeholder='Username'
+              className='className=' signup-inputs
+              type='text'
+              name='username'
+              onChange={ updateUsername }
+              value={ username }
+              required={ true }
+              autoComplete="off"
+            ></input>
+          </div>
+          <div>
+            <input
+              placeholder="Password"
+              className='signup-inputs'
+              type="password"
+              name="password"
+              autoComplete="off"
+              onChange={ updatePassword }
+              value={ password }
+              required={ true }
+            ></input>
+            <input
+              placeholder="Repeat Password"
+              autoComplete="off"
+              className='signup-inputs'
+              type="password"
+              name="repeat_password"
+              onChange={ updateRepeatPassword }
+              value={ repeatPassword }
+              required={ true }
+            >
+
+            </input>
+            <button
+              type='submit'
+              className='signup-btn'
+              disabled={
+                !username.length || !email.length || !password.length || !repeatPassword.length || !name.length
+              }
+            >
+              Sign Up
+            </button>
+          </div>
+        </form>
+        <div className='signup-errors'>
+
+          { errors.map((error, ind) => (
+            <div key={ ind }>{ error }</div>
+          )) }
+
+        </div>
       </div>
-      <div>
-        <label>User Name</label>
-        <input
-          type='text'
-          name='username'
-          onChange={updateUsername}
-          value={username}
-        ></input>
-      </div>
-      <div>
-        <label>Email</label>
-        <input
-          type='text'
-          name='email'
-          onChange={updateEmail}
-          value={email}
-        ></input>
-      </div>
-      <div>
-        <label>Password</label>
-        <input
-          type='password'
-          name='password'
-          onChange={updatePassword}
-          value={password}
-        ></input>
-      </div>
-      <div>
-        <label>Repeat Password</label>
-        <input
-          type='password'
-          name='repeat_password'
-          onChange={updateRepeatPassword}
-          value={repeatPassword}
-          required={true}
-        ></input>
-      </div>
-      <button type='submit'>Sign Up</button>
-    </form>
+    </div>
   );
 };
 

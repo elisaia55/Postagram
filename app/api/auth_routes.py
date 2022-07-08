@@ -1,5 +1,6 @@
+from crypt import methods
 from flask import Blueprint, jsonify, session, request
-from app.models import User, db
+from app.models import db, User, Follow
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
@@ -65,10 +66,18 @@ def sign_up():
         user = User(
             username=form.data['username'],
             email=form.data['email'],
-            password=form.data['password']
+            password=form.data['password'],
+            image_url="https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg",
+            name=form.data['name']
         )
         db.session.add(user)
         db.session.commit()
+
+        follow = Follow(followerId=user.id, followingId=2)
+
+        db.session.add(follow)
+        db.session.commit()
+
         login_user(user)
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401

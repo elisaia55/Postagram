@@ -7,12 +7,12 @@ class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(40), nullable=False, unique=True)
+    username = db.Column(db.String(30), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
     image_url = db.Column(db.String(250), nullable=False)
     description = db.Column(db.String(125), nullable=True)
-    name = db.Column(db.String(35), nullable=True)
+    name = db.Column(db.String(40), nullable=True)
 
     @property
     def password(self):

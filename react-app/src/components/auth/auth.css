@@ -1,0 +1,27 @@
+/* .signup-demo-btn {
+    height: 30px;
+    width: 30px;
+} */
+.signup-outer-container {
+    display: flex;
+    gap: 10px;
+    min-height: 100vh;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+.main-logo {
+width: auto;
+height: 460px;
+}
+
+.main-logo {
+height: auto;
+width: 285px;
+}
+
+  .top-signup {
+    width: 300px;
+  }
