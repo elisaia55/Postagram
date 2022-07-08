@@ -61,6 +61,24 @@ export const removeFollow = (id, userId) => async (dispatch) => {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
-        }
-    })
+        },
+    });
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(findFollowers(data, userId));
+    }
+}
+
+const initialState = { users: null };
+
+export default function followReducer(state = initialState, action) {
+    switch (action.type) {
+        case GET_ALL_FOLLOWS:
+            return { ...state, [action.userId]: action.payload };
+        case GET_SUGGESTED_USERS:
+            return { ...state, users: action.payload.final };
+        default:
+            return state;
+
+    }
 }

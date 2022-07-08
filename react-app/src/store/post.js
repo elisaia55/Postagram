@@ -18,6 +18,18 @@ const getDetails = (posts) => ({
     payload: posts,
 })
 
+export const likePost = (postId) => async (dispatch) => {
+    const res = await fetch(`/api/likes/${postId}`,
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+    const data = await res.json();
+    dispatch(getFollowingPosts(data));
+}
+
 
 export const findPosts = (userId) => async (dispatch) => {
     const res = await fetch(`/api/posts/id/${userId}`)
@@ -27,6 +39,17 @@ export const findPosts = (userId) => async (dispatch) => {
 
     }
 };
+
+
+export const submitComment = (obj) => async (dispatch) => {
+    const res = await fetch(`/api/comments`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "Application/json",
+        },
+        body: JSON.stringify(obj)
+    })
+}
 
 export const postDetails = (postId) => async (dispatch) => {
     const res = await fetch(`/api/posts/id/${postId}`);
