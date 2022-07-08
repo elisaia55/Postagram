@@ -10,6 +10,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import Navigation from './components/Navigation';
 import NewPost from './components/PostModal/NewPost';
+import Post from './components/Post';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -38,7 +39,7 @@ function App() {
         </Route>
         <ProtectedRoute path="/posts/:postId" exact={ true }>
           <Navigation />
-          <NewPost />
+          <Post />
         </ProtectedRoute>
         <ProtectedRoute path='/users' exact={ true } >
           <UsersList />

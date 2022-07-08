@@ -41,14 +41,16 @@ export const findPosts = (userId) => async (dispatch) => {
 };
 
 
-export const submitComment = (obj) => async (dispatch) => {
+export const postComment = (obj) => async (dispatch) => {
     const res = await fetch(`/api/comments`, {
         method: "POST",
         headers: {
             "Content-Type": "Application/json",
         },
         body: JSON.stringify(obj)
-    })
+    });
+    const data = await res.json();
+    dispatch(getFollowingPosts(data))
 }
 
 export const postDetails = (postId) => async (dispatch) => {
@@ -56,6 +58,14 @@ export const postDetails = (postId) => async (dispatch) => {
     const data = res.json();
     if (res.ok) {
         dispatch(getDetails(data));
+    }
+}
+
+export const postFind = (userId) => async (dispatch) => {
+    const res = await fetch(`/api/posts/${userId}`);
+    const data = await res.json();
+    if (res.ok) {
+        dispatch(getPosts(data, userId))
     }
 }
 

@@ -4,6 +4,7 @@ const OpenModalContext = createContext();
 
 export const OpenModalProvider = (props) => {
     const [num, setNum] = useState(0);
+    const [likes, setLikes] = useState(0)
 
     return (
         <OpenModalContext.Provider
