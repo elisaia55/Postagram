@@ -18,12 +18,15 @@ const Post = () => {
     const [counter, setCounter] = useState(0);
     const [input, setInput] = useState("");
     const [src, setSrc] = useState("");
+    const [filtered, setFiltered] = useState([]);
     const user = useSelector((state) => state.session.user);
     const post = useSelector((state) => state.post?.unique);
-    const userPost = useSelector((state) => state.post[post?.user?.id]?.following);
+    const userPosts = useSelector((state) => state.post[post?.user?.id]?.following);
+    const following = useSelector((state) => state.follow[user?.id]?.following)
     const followingFeed = useSelector((state) => state.post.following);
 
     const [hidden, setHidden] = useState(new Array(post?.comments?.length).fill(true))
+    console.log(userPosts, "----------------->")
 
     useEffect(() => {
         dispatch(postDetails(+postId));
@@ -39,13 +42,59 @@ const Post = () => {
 
     useEffect(() => {
         dispatch(postFind(post?.user?.id))
-    })
+    }, [post])
+
+    useEffect(() => {
+        const arr = new Array(post?.comments.length).fill(true);
+        setHidden(arr);
+    }, [post?.comments])
+
+    useEffect(() => {
+        const filteredPost = userPosts?.filter((post) => post.post.id !== +postId);
+        setFiltered(filteredPost);
+    }, [userPosts])
+
+    const addFollow = () => {
+        dispatch(followUser(post?.user.id)).then(() => dispatch(getPostFollowing(user?.id)))
+    };
+
+    const addLike = (id) => {
+        dispatch(likePost(id)).then(() => dispatch(getPostFollowing(user?.id)));
+    };
+
+    // heart animation gif?? for likes const addLikeAnimation () => {}
+
+
+    const newComment = (postId) => {
+        if (input.length < 1) {
+            return;
+        }
+        const obj = {
+            userId: +user.id,
+            postId: +postId,
+            description: input,
+        };
+        dispatch(postComment(obj));
+        setInput("");
+    };
+
+    const showDelete = (index) => {
+        let arr = [...hidden];
+        arr.fill(true);
+        arr[index] = false;
+        setHidden(arr)
+    }
+
+    const hideDelete = (index) => {
+        let arr = [...hidden];
+        arr.fill(true);
+        arr[index] = true;
+        setHidden(arr)
+    }
 
 
     return (
-        <>
-            { post }
-        </>
+        <div></div>
     )
 
 }
