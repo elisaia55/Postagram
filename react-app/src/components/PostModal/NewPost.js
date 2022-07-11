@@ -81,7 +81,7 @@ const NewPost = () => {
                                     <input
                                         id="new-photo"
                                         type="file"
-                                        className="hidden"
+                                        className="hidden2"
                                         accept="image/*"
                                         onChange={ (e) => {
                                             setUrl(URL.createObjectURL(e.target.files[0]));

@@ -1,7 +1,3 @@
-.hidden4 {
-    display: none
-}
-
 .post-main {
     padding-top: 55px;
     /* padding-right: 25%;
@@ -45,7 +41,7 @@
     display: flex;
     align-items: center;
     border-bottom: 0.5px solid #efefef;
-    width: 333px;
+    width: 313px;
 }
 
 .pp-user-img {

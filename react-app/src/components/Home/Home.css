@@ -192,9 +192,8 @@
     margin-bottom: 5px;
 }
 
-.hidden2 {
-    display: none;
-}
+
+
 
 .post-test {
     font-size: 14px;
@@ -251,6 +250,8 @@
     color: #0095f6;
     cursor: pointer;
     font-weight: 600;
+    background-color: transparent;
+    border: none;
 }
 
 .emoji-wordcount-2 {

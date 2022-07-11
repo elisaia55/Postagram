@@ -27,8 +27,8 @@
     width: 100%;
 }
 
-.hidden3 {
-    display: none;
+.menu-btns5 {
+    margin-left: 20px;
 }
 
 .del-btn {
@@ -73,13 +73,14 @@
     padding: 16px 16px;
     height: 25px;
     cursor: pointer;
-    margin-left: 10px;
+    /* margin-left: 10px; */
 }
 
 
 
+
 .del-conf-top {
-    width: 400px;
+    width: 368px;
     text-align: center;
     padding: 16px 16px;
     height: 96px;
