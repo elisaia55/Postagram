@@ -24,20 +24,20 @@ const Post = () => {
     const [counter, setCounter] = useState(0);
     const [input, setInput] = useState("");
     const [src, setSrc] = useState("");
-    const post = useSelector((state) => state.posts?.unique);
+    const post = useSelector((state) => state.post?.unique);
     const [filteredPost, setFilteredPost] = useState([]);
     const user = useSelector((state) => state.session.user);
-    const userPosts = useSelector((state) => state.posts[post?.user?.id]?.posts);
+    const userPosts = useSelector((state) => state.post[post?.user?.id]?.posts);
     const following = useSelector((state) => state.follow[user?.id]?.following)
-    const followingFeed = useSelector((state) => state.posts.following);
+    const followingFeed = useSelector((state) => state.post.following);
 
 
     const [hidden, setHidden] = useState(new Array(post?.comments?.length).fill(true))
 
 
     useEffect(() => {
-        console.log(followingFeed, "-----------------> STATE HIT")
         dispatch(postDetails(+postId));
+        console.log(post, userPosts, "-----------------> STATE HIT")
         dispatch(findFollowers(user?.id));
 
     }, [postId, user, followingFeed])
@@ -385,7 +385,7 @@ const Post = () => {
                                         >
                                             <img
                                                 className={ `p-img-loading pl-img-${i} ` }
-                                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Loader.gif/480px-Loader.gif"
+                                                src="https://c.tenor.com/JbpMGnCf-noAAAAC/loading-instagram.gif"
                                             />
                                             <img
                                                 className={ `p-img p-img-${i} hidden4` }

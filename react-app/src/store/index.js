@@ -7,9 +7,10 @@ import followReducer from './follow';
 
 const rootReducer = combineReducers({
   session,
-  posts: postsReducer,
+  post: postsReducer,
   user: userReducer,
   follow: followReducer,
+
 });
 
 

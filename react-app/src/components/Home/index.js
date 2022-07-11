@@ -25,7 +25,7 @@ const Home = () => {
     const [src, setSrc] = useState("");
     const [unfollowed, setUnfollowed] = useState();
     const user = useSelector((state) => state.session.user);
-    const followingPosts = useSelector((state) => state.posts.following);
+    const followingPosts = useSelector((state) => state.post.following);
     const suggestions = useSelector((state) => state.follow.users);
     const following = useSelector((state) => state.follow[user?.id]?.following);
     const [inputs, setInputs] = useState(
@@ -178,7 +178,7 @@ const Home = () => {
                                     </div>
                                     <img
                                         className={ `post-img-loading post-img-${i}` }
-                                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Loader.gif/480px-Loader.gif"
+                                        src="https://c.tenor.com/JbpMGnCf-noAAAAC/loading-instagram.gif"
                                     />
                                     <img
                                         // onDoubleClick={ () => addLike(post.post.id, post.likes) }

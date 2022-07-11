@@ -41,6 +41,15 @@ export const findPosts = (userId) => async (dispatch) => {
     }
 };
 
+export const postDetails = (postId) => async (dispatch) => {
+    const res = await fetch(`/api/posts/id/${postId}`);
+    const data = res.json();
+    console.log(res, "-------- HIT UNIQUE POSTS THUNK ----------")
+    if (res.ok) {
+        console.log(data, "--------2 HIT UNIQUE POSTS THUNK ----------")
+        dispatch(getDetails(data));
+    }
+}
 
 export const editPost = (obj, id) => async (dispatch) => {
     const res = await fetch(`/api/posts/${id}`, {
@@ -88,15 +97,6 @@ export const postComment = (obj) => async (dispatch) => {
     dispatch(getFollowingPosts(data))
 }
 
-export const postDetails = (postId) => async (dispatch) => {
-    const res = await fetch(`/api/posts/id/${postId}`);
-    const data = res.json();
-    console.log(res, "-------- HIT UNIQUE POSTS THUNK ----------")
-    if (res.ok) {
-        console.log(data, "--------2 HIT UNIQUE POSTS THUNK ----------")
-        dispatch(getDetails(data));
-    }
-}
 
 
 export const newPost = (obj) => async (dispatch) => {
