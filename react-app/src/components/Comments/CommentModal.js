@@ -4,6 +4,7 @@ import { OpenModal } from "../../context/OpenModal";
 import CommentMenu from "./CommentMenu";
 
 
+
 const CommentModal = ({ comment, hidden }) => {
     const { commentId, setCommentId } = OpenModal();
 
@@ -13,7 +14,12 @@ const CommentModal = ({ comment, hidden }) => {
                 className="comment-options"
                 hidden={ hidden }
                 onClick={ () => setCommentId(comment.comment.id) }
-                src="https://img.icons8.com/material-sharp/30/000000/delete-sign.png"
+                src="https://img.icons8.com/material-two-tone/24/000000/more.png"
+                style={ {
+                    height: "22px",
+                    width: "22px",
+                    cursor: "pointer"
+                } }
             />
             { commentId === comment.comment.id && (
                 <Modal onClose={ () => setCommentId(0) }>

@@ -4,7 +4,19 @@ import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { OpenModal } from "../../context/OpenModal";
 import NewPostModal from "../PostModal/PostModal";
+import HomeFilled from '../../images/HomeSEL.png'
+import HomeEmpty from '../../images/HomeUN.png'
+
+import MsgEmpty from '../../images/msgEmptynew.png'
+import MsgFilled from "../../images/msgFillednew.png";
+
+import ExploreFilled from '../../images/DiscoverSEL.png'
+import ExploreEmpty from '../../images/DiscoverUN.png'
+
+import NotifFilled from '../../images/NotifsSEL.png'
+import NotifEmpty from '../../images/NotifsUN.png'
 import './Navigation.css'
+
 
 const Navigation = () => {
     const dispatch = useDispatch();
@@ -30,26 +42,27 @@ const Navigation = () => {
                     <div className="right-nav">
                         { path === "/" && num !== 1 ? (
                             <div onClick={ () => history.push("/") } className="nav-btns">
-                                HOME ICON EMPTY
+                                <img className="dm-btn" src={ HomeFilled }></img>
                             </div>
                         ) : (
                             <div onClick={ () => history.push("/") } className="nav-btns">
-                                HOME ICON FILLED
+                                <img className="dm-btn" src={ HomeEmpty }></img>
                             </div>
                         ) }
                         { path === "/messages" && num !== 1 ? (
                             <div
-                                className="nav-msg-btn"
+                                className="dm-btn"
+
                                 onClick={ () => history.push("/messages") }
                             >
-                                MESSAGE ICON FILLED
+                                <img className="dm-btn" src={ MsgFilled }></img>
                             </div>
                         ) : (
                             <div
-                                className="nav-msg-btn"
+                                className="dm-btn"
                                 onClick={ () => history.push("/messages") }
                             >
-                                MESSAGE ICON EMPTY
+                                <img className="dm-btn" src={ MsgEmpty }></img>
                             </div>
                         ) }
                         <NewPostModal />
@@ -58,14 +71,14 @@ const Navigation = () => {
                                 className="nav-msg-btn"
                                 onClick={ () => history.push("/explore") }
                             >
-                                EXPLORE ICON FILLED
+                                <img className="dm-btn" src={ ExploreFilled }></img>
                             </div>
                         ) : (
                             <div
                                 className="nav-msg-btn"
                                 onClick={ () => history.push("/explore") }
                             >
-                                EXPLORE ICON EMPTY
+                                <img className="dm-btn" src={ ExploreEmpty }></img>
                             </div>
                         ) }
                         <p>NOTIFS BUTTON</p>

@@ -9,6 +9,23 @@
     padding-right: 10px;
 }
 
+.home-stories {
+    display: flex;
+    justify-content: center;
+    height: 120px;
+    border: 1px #dbdbdb solid;
+    width: 615px;
+    margin-right: 355px;
+
+}
+
+.home-stories-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+
 .home-posts {
     display: flex;
     flex-direction: column;
@@ -272,6 +289,7 @@
 
 .home-right-card {
     position: fixed;
+    top: 130px;
 }
 
 .h-right-user {

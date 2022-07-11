@@ -58,7 +58,7 @@ const Post = () => {
     }, [post?.comments])
 
     useEffect(() => {
-        const filtered = userPosts?.filter((post) => post.posts.id !== +postId);
+        const filtered = userPosts?.filter((post) => post.post.id !== +postId);
         setFilteredPost(filtered);
     }, [userPosts])
 

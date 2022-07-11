@@ -12,6 +12,10 @@
     top: -9px
 }
 
+.nav-msg-btn:hover {
+    cursor: pointer;
+}
+
 .mid-nav-container {
     display: flex;
     margin: auto;
@@ -30,14 +34,19 @@
     padding-left: 24px;
     width: 250px;
     font-stretch: 100%;
+    margin-top: 7px;
 
 }
 
-.nav-btns {
-    /* border: none;
-    margin: 0;
-    padding: 0;
+.nav-btns:hover {
     cursor: pointer;
-    width: 22px;
-    height: 22px; */
+}
+
+.dm-btn {
+    width: 28px;
+    height: 28px;
+}
+
+.dm-btn:hover {
+    cursor: pointer;
 }

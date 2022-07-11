@@ -3,6 +3,8 @@ import { Modal } from "../../context/Modal"
 import { OpenModal } from "../../context/OpenModal"
 import NewPost from "./NewPost"
 import "../Navigation/Navigation.css"
+import PostFilled from '../../images/CreateSEL.png'
+import PostEmpty from '../../images/CreateUN.png'
 
 const NewPostModal = () => {
     const { num, setNum } = OpenModal();
@@ -14,14 +16,14 @@ const NewPostModal = () => {
                     onClick={ () => setNum(1) }
                     className="nav-btns"
                 >
-                    NEW POST BUTTON
+                    <img className="dm-btn" src={ PostEmpty }></img>
                 </div>
             ) : (
                 <div
                     onClick={ () => setNum(1) }
                     className="nav-btns"
                 >
-                    NEW POST BUTTON IN USE
+                    <img className="dm-btn" src={ PostFilled }></img>
                 </div>
             ) }
             { num === 1 && (

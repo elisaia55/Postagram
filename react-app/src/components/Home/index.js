@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import React, { Component } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { findFollowers, findSuggestedUsers, followUser } from "../../store/follow";
 import { findPosts, getPostFollowing, postComment, likePost } from "../../store/post";
@@ -10,6 +11,7 @@ import { Modal } from "../../context/Modal";
 import { icon1, icon2, icon3, emojiIcon } from "./HomeIcons";
 import { logout } from "../../store/session";
 import Likes from "../Likes";
+import Stories from "react-insta-stories"
 import Unfollow from "../UserProfile/Unfollow";
 import "./Home.css"
 
@@ -143,10 +145,24 @@ const Home = () => {
         dispatch(followUser(id))
             .then(() => dispatch(findFollowers(user?.id)))
     }
+    const stories = [
+        'https://example.com/pic.jpg',
+        'data:image/jpg;base64,R0lGODl....',
+        '../../images/app-store.png',
+    ];
 
+    {/* <Stories
+                    stories={ stories }
+                    defaultInterval={ 1500 }
+                    width={ 432 }
+                    height={ 768 } /> */}
 
     return (
         <>
+            <div className="home-stories-container">
+
+                <div className="home-stories">STORIES</div>
+            </div>
             { followingPosts?.length < 1 ? (
                 <div className="new-main">
                     Please submit a new post or search for people to follow to populate
@@ -182,7 +198,7 @@ const Home = () => {
                                     />
                                     <img
                                         // onDoubleClick={ () => addLike(post.post.id, post.likes) }
-                                        className={ `post-img loaded-img-${i} hidden` }
+                                        className={ `post-img loaded-img-${i} hidden2` }
                                         onLoad={ () => loadIt(i) }
                                         src={ post.post.media_url }
                                     />

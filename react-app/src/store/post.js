@@ -34,7 +34,7 @@ export const likePost = (postId) => async (dispatch) => {
 
 export const findPosts = (userId) => async (dispatch) => {
     const res = await fetch(`/api/posts/${userId}`)
-    const data = res.json();
+    const data = await res.json();
     if (res.ok) {
         dispatch(getPosts(data, userId));
 
@@ -43,7 +43,7 @@ export const findPosts = (userId) => async (dispatch) => {
 
 export const postDetails = (postId) => async (dispatch) => {
     const res = await fetch(`/api/posts/id/${postId}`);
-    const data = res.json();
+    const data = await res.json();
     console.log(res, "-------- HIT UNIQUE POSTS THUNK ----------")
     if (res.ok) {
         console.log(data, "--------2 HIT UNIQUE POSTS THUNK ----------")
