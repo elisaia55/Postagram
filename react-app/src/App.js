@@ -11,6 +11,7 @@ import { authenticate } from './store/session';
 import Navigation from './components/Navigation';
 import NewPost from './components/PostModal/NewPost';
 import Post from './components/Post';
+import Home from './components/Home';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -50,6 +51,7 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={ true } >
           <Navigation />
+          <Home />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

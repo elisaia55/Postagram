@@ -41,6 +41,40 @@ export const findPosts = (userId) => async (dispatch) => {
 };
 
 
+export const editPost = (obj, id) => async (dispatch) => {
+    const res = await fetch(`/api/posts/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(obj)
+    });
+    const data = await res.json();
+    dispatch(getFollowingPosts(data));
+}
+
+export const deletePost = (id) => async (dispatch) => {
+    const res = await fetch(`/api/posts/${id}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+    const data = await res.json();
+    dispatch(getFollowingPosts(data));
+}
+
+export const deleteComment = (id) => async (dispatch) => {
+    const res = await fetch(`/api/comments/${id}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+    const data = await res.json();
+    dispatch(getFollowingPosts(data));
+};
+
 export const postComment = (obj) => async (dispatch) => {
     const res = await fetch(`/api/comments`, {
         method: "POST",
@@ -56,22 +90,17 @@ export const postComment = (obj) => async (dispatch) => {
 export const postDetails = (postId) => async (dispatch) => {
     const res = await fetch(`/api/posts/id/${postId}`);
     const data = res.json();
+    console.log(res, "-------- HIT UNIQUE POSTS THUNK ----------")
     if (res.ok) {
+        console.log(data, "--------2 HIT UNIQUE POSTS THUNK ----------")
         dispatch(getDetails(data));
     }
 }
 
-export const postFind = (userId) => async (dispatch) => {
-    const res = await fetch(`/api/posts/${userId}`);
-    const data = await res.json();
-    if (res.ok) {
-        dispatch(getPosts(data, userId))
-    }
-}
 
 export const newPost = (obj) => async (dispatch) => {
     const { file, description } = obj;
-    console.log(file, description, "<------ HIT")
+
     const form = new FormData();
     form.append('file', file);
     form.append('description', description);

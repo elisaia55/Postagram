@@ -1,3 +1,4 @@
+
 from flask import Blueprint, Config, jsonify, request
 from flask_login import login_required, current_user
 from app.models import db, Post, Follow, Comment, User, Like
@@ -116,6 +117,18 @@ def get_posts(id):
     return {'posts': [item for item in feed]}
 
 
+@post_routes.route('/<int:postId>', methods=["DELETE"])
+@login_required
+def delete_posts(postId):
+
+    post = Post.query.get(postId)
+
+    db.session.delete(post)
+    db.session.commit()
+
+    return posts_following()
+
+
 @post_routes.route('/new', methods=["POST"])
 @login_required
 def new_post():
@@ -133,3 +146,18 @@ def new_post():
         db.session.commit()
 
     return {'msg': "Succesful Post"}
+
+
+@post_routes.route('/<int:postId>', methods=["PUT"])
+@login_required
+def edit_post(postId):
+
+    data = request.json
+
+    post = Post.query.get(postId)
+
+    post.description = request.json['description']
+
+    db.session.commit()
+
+    return posts_following()

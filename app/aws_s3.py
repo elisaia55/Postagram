@@ -9,7 +9,7 @@ s3 = boto3.client(
     aws_secret_access_key=os.environ.get('S3_SECRET')
 )
 
-ALLOWED_EXTENSIONS = {"pdf", "png", "jpg", "jpeg", "gif"}
+ALLOWED_EXTENSIONS = {"pdf", "png", "jpg", "jpeg", "gif", "mp4"}
 
 
 def allowed_file(filename):

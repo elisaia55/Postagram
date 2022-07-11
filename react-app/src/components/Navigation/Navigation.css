@@ -1,17 +1,18 @@
 .outer-nav-container {
     height: 65px;
-    width: 65%;
+    width: 100%;
     background-color: #ffffff;
-    border-bottom: 1px solid rgb(220,220,220);
+    border-bottom: 1px solid rgb(220, 220, 220);
     display: flex;
     align-items: center;
     justify-content: space-between;
     box-sizing: border-box;
     position: fixed;
     z-index: 10;
+    top: -9px
 }
 
-.mid-nav-container{
+.mid-nav-container {
     display: flex;
     margin: auto;
     width: 1000px;
