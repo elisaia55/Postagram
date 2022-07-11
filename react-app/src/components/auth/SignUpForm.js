@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
@@ -37,8 +38,12 @@ const SignUpForm = () => {
     }
   };
 
-  const demoUser = async () => {
-    await dispatch(login("demo@aa.io", "password"))
+  useEffect(() => {
+    document.title = 'Sign Up • Postagram'
+  }, [])
+
+  const demoUser = () => {
+    dispatch(login("demo@aa.io", "password"))
   }
 
   const updateUsername = (e) => {

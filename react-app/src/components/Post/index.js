@@ -24,9 +24,9 @@ const Post = () => {
     const [counter, setCounter] = useState(0);
     const [input, setInput] = useState("");
     const [src, setSrc] = useState("");
+    const post = useSelector((state) => state.posts?.unique);
     const [filteredPost, setFilteredPost] = useState([]);
     const user = useSelector((state) => state.session.user);
-    const post = useSelector((state) => state.posts?.unique);
     const userPosts = useSelector((state) => state.posts[post?.user?.id]?.posts);
     const following = useSelector((state) => state.follow[user?.id]?.following)
     const followingFeed = useSelector((state) => state.posts.following);
@@ -36,7 +36,7 @@ const Post = () => {
 
 
     useEffect(() => {
-        console.log(user, post, following, followingFeed, "-----------------> STATE HIT")
+        console.log(followingFeed, "-----------------> STATE HIT")
         dispatch(postDetails(+postId));
         dispatch(findFollowers(user?.id));
 
@@ -151,7 +151,7 @@ const Post = () => {
                 <div className="p-card">
                     <img
                         className="pp-img-load"
-                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Loader.gif/480px-Loader.gif"
+                        src=""
                     />
                     <img
                         className="pp-img hidden"

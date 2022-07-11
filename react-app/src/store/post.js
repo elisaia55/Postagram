@@ -4,7 +4,8 @@ const GET_ONE_POST = 'post/GET_ONE_POST'
 
 const getPosts = (posts, userId) => ({
     type: GET_POSTS,
-    payload: posts, userId
+    payload: posts,
+    userId,
 })
 
 const getFollowingPosts = (posts) => ({
@@ -32,7 +33,7 @@ export const likePost = (postId) => async (dispatch) => {
 
 
 export const findPosts = (userId) => async (dispatch) => {
-    const res = await fetch(`/api/posts/id/${userId}`)
+    const res = await fetch(`/api/posts/${userId}`)
     const data = res.json();
     if (res.ok) {
         dispatch(getPosts(data, userId));
@@ -126,10 +127,10 @@ export default function postsReducer(state = initialState, action) {
     switch (action.type) {
         case GET_POSTS:
             return { ...state, [action.userId]: action.payload };
-        case GET_ONE_POST:
-            return { ...state, ...action.payload }
         case GET_FOLLOWING_POST:
             return { ...state, following: action.payload.following }
+        case GET_ONE_POST:
+            return { ...state, ...action.payload }
         default:
             return state;
     }

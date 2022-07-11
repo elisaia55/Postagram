@@ -280,7 +280,6 @@ span.pp-user {
     margin-top: 20px;
     font-size: 11px;
     gap: 2.5px;
-    /* margin-top: auto !important; */
     margin: 0 auto;
     width: max-content;
 }
